@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/*
+  Back2Life — strictly monochrome design system.
+  Palette: true black / near-black / grays / white. No color anywhere.
+*/
+:root {
+  --black: #000000;
+  --near-black: #0a0a0a;
+  --surface: #141414;
+  --hairline: #2a2a2a;
+  --mid-gray: #8a8a8a;
+  --white: #ffffff;
+
+  /* Strong custom easings (built-ins are too weak) */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-door: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@theme inline {
+  --color-black: var(--black);
+  --color-near-black: var(--near-black);
+  --color-surface: var(--surface);
+  --color-hairline: var(--hairline);
+  --color-mid: var(--mid-gray);
+  --color-white: var(--white);
+
+  --font-display: var(--font-anton);
+  --font-blackletter: var(--font-pirata);
+  --font-sans: var(--font-archivo);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--near-black);
+}
+
+body {
+  background: var(--near-black);
+  color: var(--white);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Every photo on the site stays grayscale, whatever gets dropped in. */
+img {
+  filter: grayscale(1);
+}
+
+::selection {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* Visible, consistent focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Display type: heavy compressed uppercase grotesque */
+.display {
+  font-family: var(--font-anton), system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+}
+
+/* Restrained blackletter accent for Ink headings (used sparingly) */
+.blackletter {
+  font-family: var(--font-pirata), serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* Film-grain overlay — essential to the brand texture. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 60;
+  opacity: var(--grain-opacity, 0.07);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 0.9s steps(4) infinite;
+}
+
+/* Heavier grain on the Ink side, lighter on Studios */
+.grain-ink {
+  --grain-opacity: 0.11;
+}
+.grain-studios {
+  --grain-opacity: 0.06;
+}
+
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 1%); }
+  50% { transform: translate(1%, -2%); }
+  75% { transform: translate(-1%, -1%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Ink hairline rule marks — echoes the marks flanking "INK" in the logo */
+.ink-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.ink-rule::before,
+.ink-rule::after {
+  content: "";
+  height: 1px;
+  width: 2.5rem;
+  background: var(--mid-gray);
+  flex: none;
+}
+
+/* Pressable feedback on every button/CTA */
+.pressable {
+  transition: transform 160ms var(--ease-out-strong);
+}
+.pressable:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .grain::after {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
