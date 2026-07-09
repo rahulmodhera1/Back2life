@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { InstagramIcon } from "@/components/InstagramIcon";
-import { InkWordmark } from "@/components/InkWordmark";
 import { StudiosWordmark } from "@/components/StudiosWordmark";
 import { ADDRESS, INSTAGRAM_INK, INSTAGRAM_STUDIOS } from "@/data/site";
 
@@ -16,7 +15,6 @@ export function Footer() {
               One brand, two crafts. Grooming that resets you, ink that marks a
               new chapter.
             </p>
-            <InkWordmark widthClassName="w-28" className="mt-5 opacity-70" />
           </div>
 
           <nav aria-label="Verticals" className="flex flex-col gap-3 text-sm">
