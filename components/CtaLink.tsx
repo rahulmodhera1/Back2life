@@ -20,8 +20,8 @@ export function CtaLink({
     "pressable inline-flex min-h-12 items-center justify-center gap-2 px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] transition-colors duration-200";
   const styles =
     variant === "solid"
-      ? "bg-white text-black hover:bg-black hover:text-white hover:outline hover:outline-1 hover:outline-white"
-      : "border border-white/40 text-white hover:border-white hover:bg-white hover:text-black";
+      ? "bg-white text-black hover:bg-gold"
+      : "border border-white/40 text-white hover:border-gold hover:text-gold";
 
   return (
     <a

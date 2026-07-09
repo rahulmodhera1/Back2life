@@ -83,7 +83,7 @@ export default function InkPage() {
               href={INSTAGRAM_INK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition-colors duration-200 hover:text-white"
+              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition-colors duration-200 hover:text-gold"
             >
               <InstagramIcon className="size-4" aria-hidden="true" />
               More on Instagram
@@ -111,7 +111,7 @@ export default function InkPage() {
                   >
                     <span className="blackletter text-4xl">{artist.name}</span>
                     <span className="mt-3 text-sm text-white/70">{artist.specialty}</span>
-                    <span className="mt-6 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.2em] text-mid transition-colors duration-200 group-hover:text-white">
+                    <span className="mt-6 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.2em] text-mid transition-colors duration-200 group-hover:text-gold">
                       View work
                       <ArrowUpRight
                         className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -141,7 +141,7 @@ export default function InkPage() {
                 delay={index * 0.06}
                 className="border-t border-hairline pt-6"
               >
-                  <p className="text-xs font-semibold tabular-nums text-mid">
+                  <p className="text-xs font-semibold tabular-nums text-gold">
                     {String(index + 1).padStart(2, "0")}
                   </p>
                   <h3 className="mt-2 text-lg font-bold uppercase tracking-[0.1em]">

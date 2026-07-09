@@ -31,7 +31,7 @@ export function InkWordmark({ className = "", sizeClassName = "text-5xl md:text-
   return (
     <span className={`flex flex-col items-center ${className}`}>
       <span className={`blackletter ${sizeClassName} leading-none`}>Back2Life</span>
-      <span className="ink-rule mt-3 text-sm font-medium uppercase tracking-[0.5em] text-white">
+      <span className="ink-rule mt-3 text-sm font-medium uppercase tracking-[0.5em] text-gold">
         Ink
       </span>
     </span>

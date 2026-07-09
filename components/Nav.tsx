@@ -39,7 +39,7 @@ export function Nav() {
                 className={`pressable rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] transition-colors duration-200 ${
                   active
                     ? "bg-white text-black"
-                    : "text-white hover:bg-white/15"
+                    : "text-white hover:text-gold"
                 }`}
               >
                 {label}

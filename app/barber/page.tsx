@@ -74,7 +74,7 @@ export default function BarberPage() {
         />
         <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
           <Reveal>
-            <h2 id="services-heading" className="display text-5xl md:text-7xl">
+            <h2 id="services-heading" className="gold-tick display text-5xl md:text-7xl">
               The Menu
             </h2>
           </Reveal>
@@ -92,7 +92,7 @@ export default function BarberPage() {
                       {service.description}
                     </p>
                   </div>
-                  <p className="text-sm font-semibold tabular-nums text-white">
+                  <p className="text-sm font-semibold tabular-nums text-gold">
                     {service.price}
                     <span className="ml-3 font-normal text-mid">{service.duration}</span>
                   </p>
@@ -106,14 +106,14 @@ export default function BarberPage() {
       <section aria-labelledby="gallery-heading" className="bg-black">
         <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
-            <h2 id="gallery-heading" className="display text-5xl md:text-7xl">
+            <h2 id="gallery-heading" className="gold-tick display text-5xl md:text-7xl">
               Fresh Work
             </h2>
             <a
               href={INSTAGRAM_STUDIOS}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition-colors duration-200 hover:text-white"
+              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition-colors duration-200 hover:text-gold"
             >
               <InstagramIcon className="size-4" aria-hidden="true" />
               Follow on Instagram
@@ -129,7 +129,7 @@ export default function BarberPage() {
       <section aria-labelledby="team-heading">
         <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
           <Reveal>
-            <h2 id="team-heading" className="display text-5xl md:text-7xl">
+            <h2 id="team-heading" className="gold-tick display text-5xl md:text-7xl">
               The Chairs
             </h2>
           </Reveal>
@@ -156,7 +156,7 @@ export default function BarberPage() {
       <section aria-labelledby="hours-heading" className="bg-black">
         <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
           <Reveal>
-            <h2 id="hours-heading" className="display text-5xl md:text-7xl">
+            <h2 id="hours-heading" className="gold-tick display text-5xl md:text-7xl">
               Find Us
             </h2>
           </Reveal>
@@ -199,7 +199,7 @@ export default function BarberPage() {
                 href={ADDRESS.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-200 hover:opacity-70"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-200 hover:text-gold"
               >
                 <MapPin className="size-4" aria-hidden="true" />
                 Get Directions

@@ -16,7 +16,9 @@ const EXIT_MS = 650;
 /**
  * The landing "splitter": a full-viewport door. Hovering a half widens it and
  * lifts its photo out of the dark; choosing a side swings that panel open to
- * fill the screen before routing. Both halves are real links — keyboard and
+ * fill the screen before routing. The master brand lives at the top edge and
+ * the tagline at the bottom, clear of the moving seam, and both recede while
+ * a side is being considered. Both halves are real links — keyboard and
  * reduced-motion users navigate instantly.
  */
 export function SplitLanding() {
@@ -66,6 +68,25 @@ export function SplitLanding() {
       exiting && exiting !== side ? "opacity-0" : "opacity-100"
     }`;
 
+  // Master brand chrome recedes while the visitor weighs a side, and leaves
+  // with the door.
+  const chromeClass = exiting
+    ? "opacity-0"
+    : hovered
+      ? "opacity-40"
+      : "opacity-100";
+
+  const enterCue = (
+    <span className="mt-3 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-white/70 transition-colors duration-300 group-hover:text-gold">
+      <span className="h-px w-8 bg-white/30 transition-colors duration-300 group-hover:bg-gold" />
+      Enter
+      <ArrowRight
+        className="size-4 transition-transform duration-300 group-hover:translate-x-1.5"
+        aria-hidden="true"
+      />
+    </span>
+  );
+
   return (
     <main className="grain relative flex h-dvh flex-col overflow-hidden bg-black md:flex-row">
       <h1 className="sr-only">Back2Life — barbershop and tattoo studio</h1>
@@ -105,30 +126,41 @@ export function SplitLanding() {
           <p className="max-w-xs text-sm text-white/70">
             Cuts that bring you back.
           </p>
-          <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/80 transition-colors duration-300 group-hover:text-white">
-            Enter
-            <ArrowRight
-              className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-              aria-hidden="true"
-            />
-          </span>
+          {enterCue}
         </div>
       </Link>
 
-      {/* Center seam: master brand mark */}
+      {/* Seam hairline — a fine gold thread joining the two crafts */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-x-0 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-2 px-4 transition-opacity duration-300 ${
+        className={`pointer-events-none z-20 h-px w-full flex-none bg-gold-dim transition-opacity duration-500 md:h-auto md:w-px md:self-stretch ${
           exiting ? "opacity-0" : "opacity-100"
         }`}
+      />
+
+      {/* Master brand — top edge, clear of the moving seam */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-x-0 top-0 z-20 flex items-center justify-center gap-5 pt-7 transition-opacity duration-500 md:pt-9 ${chromeClass}`}
       >
-        <span className="display bg-black px-4 py-1.5 text-xl tracking-tight md:text-2xl">
+        <span className="h-px w-10 bg-gold-dim md:w-16" />
+        <span className="display text-lg tracking-[0.08em] text-white md:text-xl">
           Back2Life
         </span>
-        <span className="bg-black px-3 py-1 text-[11px] font-medium uppercase tracking-[0.3em] text-white/80">
-          One brand. Two crafts. Pick your side.
-        </span>
+        <span className="h-px w-10 bg-gold-dim md:w-16" />
       </div>
+
+      {/* Tagline — bottom edge */}
+      <p
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-x-0 bottom-0 z-20 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 px-4 pb-7 text-[11px] font-medium uppercase tracking-[0.35em] text-white/60 transition-opacity duration-500 md:pb-9 ${chromeClass}`}
+      >
+        One brand
+        <span className="inline-block size-1 rotate-45 bg-gold" />
+        Two crafts
+        <span className="inline-block size-1 rotate-45 bg-gold" />
+        Pick your side
+      </p>
 
       {/* Ink / tattoo half */}
       <Link
@@ -140,7 +172,7 @@ export function SplitLanding() {
         onFocus={() => setHovered("ink")}
         onBlur={() => setHovered(null)}
         style={panelStyle("ink")}
-        className="group relative min-h-0 flex-1 overflow-hidden border-t border-white/15 outline-offset-[-4px] md:border-l md:border-t-0"
+        className="group relative min-h-0 flex-1 overflow-hidden outline-offset-[-4px]"
       >
         <Image
           src="/photos/split-ink.jpg"
@@ -156,13 +188,7 @@ export function SplitLanding() {
           <p className="mt-1 max-w-xs text-sm text-white/70">
             Ink for your next chapter.
           </p>
-          <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/80 transition-colors duration-300 group-hover:text-white">
-            Enter
-            <ArrowRight
-              className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-              aria-hidden="true"
-            />
-          </span>
+          {enterCue}
         </div>
       </Link>
     </main>

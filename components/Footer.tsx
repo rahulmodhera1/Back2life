@@ -17,7 +17,7 @@ export function Footer() {
           </div>
 
           <nav aria-label="Verticals" className="flex flex-col gap-3 text-sm">
-            <p className="font-semibold uppercase tracking-[0.2em] text-mid">Visit</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Visit</p>
             <Link href="/barber" className="text-white transition-opacity duration-200 hover:opacity-70">
               Back2Life Studios — Barbershop
             </Link>
@@ -30,7 +30,7 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Social" className="flex flex-col gap-3 text-sm">
-            <p className="font-semibold uppercase tracking-[0.2em] text-mid">Follow</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Follow</p>
             <a
               href={INSTAGRAM_STUDIOS}
               target="_blank"
