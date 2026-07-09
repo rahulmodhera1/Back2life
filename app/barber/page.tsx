@@ -159,38 +159,34 @@ export default function BarberPage() {
             <GoldRule className="mt-6 w-16" origin="center" />
             <p className="mt-5 max-w-md text-sm text-white/60">{SERVICE_NOTE}</p>
           </Reveal>
-          <ul className="mx-auto mt-14 grid max-w-3xl gap-6 sm:grid-cols-2">
+          <ul className="mx-auto mt-14 max-w-2xl divide-y divide-hairline border-y border-hairline">
             {SERVICES.map((service, index) => (
-              <Reveal
-                as="li"
-                from={index % 2 === 0 ? "left" : "right"}
-                key={service.name}
-                delay={index * 0.08}
-                className="group"
-              >
+              <Reveal as="li" key={service.name} delay={index * 0.08} className="group">
                 <a
                   href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="pressable flex h-full flex-col border border-hairline bg-near-black p-8 transition-colors duration-300 hover:border-gold/50 md:p-10"
+                  className="pressable flex flex-col gap-4 px-2 py-8 transition-colors duration-300 hover:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between sm:gap-10 md:px-4"
                 >
-                  <h3 className="display text-3xl md:text-4xl">{service.name}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-white/65">
-                    {service.description}
-                  </p>
-                  <p className="mt-8 flex items-baseline gap-3">
+                  <div>
+                    <h3 className="display text-3xl md:text-4xl">{service.name}</h3>
+                    <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/65">
+                      {service.description}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-white/80 transition-colors duration-200 group-hover:text-gold">
+                      Book this service
+                      <span
+                        aria-hidden="true"
+                        className="h-px w-6 bg-white/40 transition-colors duration-200 group-hover:bg-gold"
+                      />
+                    </span>
+                  </div>
+                  <div className="flex items-baseline gap-3 sm:flex-col sm:items-end sm:gap-2 sm:text-right">
                     <span className="display text-5xl text-gold">{service.price}</span>
                     <span className="text-xs font-semibold uppercase tracking-[0.2em] text-mid">
                       {service.duration}
                     </span>
-                  </p>
-                  <span className="mt-7 inline-flex items-center gap-3 border-t border-hairline pt-5 text-xs font-bold uppercase tracking-[0.25em] text-white/80 transition-colors duration-200 group-hover:text-gold">
-                    Book this service
-                    <span
-                      aria-hidden="true"
-                      className="h-px w-6 bg-white/40 transition-colors duration-200 group-hover:bg-gold"
-                    />
-                  </span>
+                  </div>
                 </a>
               </Reveal>
             ))}
