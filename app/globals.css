@@ -150,6 +150,16 @@ p {
   background: var(--gold);
 }
 
+/* Slow wireframe-globe rotation (decorative; killed by reduced-motion) */
+.globe-spin {
+  animation: globe-spin 90s linear infinite;
+}
+@keyframes globe-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Scrolling marquee strip (constant motion → linear timing) */
 .marquee {
   display: flex;

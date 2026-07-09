@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ChevronDown, MapPin, Star } from "lucide-react";
 import { InstagramIcon } from "@/components/InstagramIcon";
+import { GoldRule } from "@/components/GoldRule";
 import { StudiosWordmark } from "@/components/StudiosWordmark";
 import { WordmarkReveal } from "@/components/WordmarkReveal";
 import { CtaLink } from "@/components/CtaLink";
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 
 const MARQUEE_ITEMS = ["Cuts", "Fades", "Beards", "Hot Towel Shaves", "Kids Cuts"];
 
+/** Services ticker, with the official wordmark stamped between passes. */
 function MarqueeStrip() {
   const row = (
     <div className="marquee-track" aria-hidden="true">
@@ -35,6 +37,10 @@ function MarqueeStrip() {
           <span className="size-1.5 rotate-45 bg-gold" />
         </span>
       ))}
+      <span className="flex items-center gap-10">
+        <StudiosWordmark widthClassName="w-36 md:w-44" className="opacity-90" />
+        <span className="size-1.5 rotate-45 bg-gold" />
+      </span>
     </div>
   );
   return (
@@ -61,10 +67,12 @@ export default function BarberPage() {
           sizes="100vw"
           className="object-cover brightness-[0.45]"
         />
-        <Globe
-          className="pointer-events-none absolute left-1/2 top-1/2 w-[120%] max-w-none -translate-x-1/2 -translate-y-1/2 text-white opacity-10 md:w-[55%]"
-          strokeWidth={0.35}
-        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 w-[120%] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[55%]"
+        >
+          <Globe className="globe-spin w-full text-white opacity-10" strokeWidth={0.35} />
+        </div>
         <div className="relative z-10 flex flex-col items-center px-5 pb-24 pt-28">
           <Reveal className="flex flex-col items-center">
             <p className="text-[11px] font-semibold uppercase tracking-[0.5em] text-gold">
@@ -79,9 +87,12 @@ export default function BarberPage() {
                 />
               </WordmarkReveal>
             </h1>
-            <p className="mt-5 text-[4.5vw] font-semibold uppercase tracking-[0.55em] text-white/90 md:text-2xl">
+            <p className="mt-5 flex items-center gap-5 text-[4.5vw] font-semibold uppercase tracking-[0.55em] text-white/90 md:text-2xl">
+              <span aria-hidden="true" className="h-px w-10 bg-gold-dim md:w-14" />
               Studios
+              <span aria-hidden="true" className="h-px w-10 bg-gold-dim md:w-14" />
             </p>
+            <GoldRule className="mt-7 w-24" origin="center" delay={0.9} />
             <p className="mt-7 max-w-md text-base text-white/75 md:text-lg">
               Precision cuts, sharp fades, and shaves done properly. Sit down,
               switch off, come back to life.
@@ -133,6 +144,7 @@ export default function BarberPage() {
             appointments, barbers who listen, and finishes that hold their
             shape long after you leave the chair.
           </p>
+          <GoldRule className="mx-auto mt-10 w-16" origin="center" />
         </Reveal>
       </section>
 
@@ -152,6 +164,7 @@ export default function BarberPage() {
             {SERVICES.map((service, index) => (
               <Reveal
                 as="li"
+                from="left"
                 key={service.name}
                 delay={index * 0.05}
                 className="flex items-baseline justify-between gap-6 border-b border-hairline py-6"
@@ -180,10 +193,13 @@ export default function BarberPage() {
       {/* Gallery */}
       <section id="work" aria-labelledby="gallery-heading" className="scroll-mt-20">
         <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
-          <Reveal className="flex flex-wrap items-end justify-between gap-6">
-            <h2 id="gallery-heading" className="gold-tick display text-5xl md:text-7xl">
-              Fresh Work
-            </h2>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <Reveal from="left">
+              <h2 id="gallery-heading" className="gold-tick display text-5xl md:text-7xl">
+                Fresh Work
+              </h2>
+            </Reveal>
+            <Reveal from="right">
             <a
               href={INSTAGRAM_STUDIOS}
               target="_blank"
@@ -193,7 +209,8 @@ export default function BarberPage() {
               <InstagramIcon className="size-4" aria-hidden="true" />
               Follow on Instagram
             </a>
-          </Reveal>
+            </Reveal>
+          </div>
           <Reveal className="mt-12">
             <GalleryGrid images={BARBER_GALLERY} />
           </Reveal>
@@ -219,6 +236,10 @@ export default function BarberPage() {
                     loading="lazy"
                     sizes="(max-width: 640px) 100vw, 33vw"
                     className="object-cover transition-transform duration-500 [transition-timing-function:var(--ease-out-strong)] group-hover:scale-[1.04]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 border border-gold/0 transition-[border-color] duration-300 group-hover:border-gold/60"
                   />
                 </div>
                 <div className="mt-5 flex items-start justify-between gap-4">
@@ -296,7 +317,7 @@ export default function BarberPage() {
             </h2>
           </Reveal>
           <div className="mt-12 grid gap-12 md:grid-cols-2">
-            <Reveal>
+            <Reveal from="left">
               <table className="w-full text-sm">
                 <caption className="sr-only">Opening hours</caption>
                 <tbody className="divide-y divide-hairline border-y border-hairline">
@@ -321,7 +342,7 @@ export default function BarberPage() {
                 slot.
               </p>
             </Reveal>
-            <Reveal delay={0.08}>
+            <Reveal from="right" delay={0.08}>
               <address className="text-lg not-italic text-white/85">
                 {ADDRESS.line1}
                 <br />
@@ -350,11 +371,14 @@ export default function BarberPage() {
 
       {/* CTA band */}
       <section className="relative overflow-hidden border-t border-hairline">
-        <Globe
-          className="pointer-events-none absolute left-1/2 top-1/2 w-[120%] max-w-none -translate-x-1/2 -translate-y-1/2 text-white opacity-[0.06] md:w-[60%]"
-          strokeWidth={0.3}
-        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 w-[120%] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[60%]"
+        >
+          <Globe className="globe-spin w-full text-white opacity-[0.06]" strokeWidth={0.3} />
+        </div>
         <Reveal className="relative mx-auto flex max-w-6xl flex-col items-center gap-8 px-5 py-24 text-center md:px-10 md:py-32">
+          <GoldRule className="w-16" origin="center" />
           <h2 className="display text-6xl md:text-8xl">Come back to life</h2>
           <div className="flex flex-wrap justify-center gap-4">
             <CtaLink href={BOOKING_URL} external>

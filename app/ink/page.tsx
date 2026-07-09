@@ -7,6 +7,7 @@ import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { InkWordmark } from "@/components/InkWordmark";
 import { WordmarkReveal } from "@/components/WordmarkReveal";
+import { GoldRule } from "@/components/GoldRule";
 import { Nav } from "@/components/Nav";
 import { PortfolioGrid } from "@/components/PortfolioGrid";
 import { Reveal } from "@/components/Reveal";
@@ -41,6 +42,9 @@ export default function InkPage() {
         />
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-5 pb-20 pt-32 text-center md:px-10">
           <Reveal className="flex flex-col items-center">
+            <p className="mb-8 text-[11px] font-semibold uppercase tracking-[0.5em] text-gold">
+              Tattoo Studio
+            </p>
             <h1>
               <span className="sr-only">Back2Life Ink</span>
               <WordmarkReveal variant="focus" delay={0.1}>
@@ -51,6 +55,7 @@ export default function InkPage() {
               Every piece marks a chapter. Fine line, black &amp; grey, realism,
               and traditional — done once, done right.
             </p>
+            <GoldRule className="mt-7 w-24" origin="center" delay={0.8} />
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <CtaLink href={CONSULT_URL} external>
                 Book a Consultation
@@ -112,7 +117,7 @@ export default function InkPage() {
                     rel="noopener noreferrer"
                     className="group flex h-full flex-col p-8 transition-colors duration-300 hover:bg-surface"
                   >
-                    <span className="blackletter text-4xl">{artist.name}</span>
+                    <span className="blackletter text-4xl transition-colors duration-300 group-hover:text-gold">{artist.name}</span>
                     <span className="mt-3 text-sm text-white/70">{artist.specialty}</span>
                     <span className="mt-6 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.2em] text-mid transition-colors duration-200 group-hover:text-gold">
                       View work
@@ -151,8 +156,9 @@ export default function InkPage() {
             {PROCESS.map((step, index) => (
               <Reveal
                 as="li"
+                from="left"
                 key={step.title}
-                delay={index * 0.06}
+                delay={index * 0.08}
                 className="border-t border-hairline pt-6"
               >
                   <p className="text-xs font-semibold tabular-nums text-gold">
@@ -185,6 +191,7 @@ export default function InkPage() {
       {/* CTA band */}
       <section className="border-t border-hairline">
         <Reveal className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-5 py-24 text-center md:px-10 md:py-32">
+          <GoldRule className="w-16" origin="center" />
           <h2 className="blackletter text-6xl md:text-7xl">Start your next chapter</h2>
           <div className="flex flex-wrap justify-center gap-4">
             <CtaLink href={CONSULT_URL} external>

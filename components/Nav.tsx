@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { useVerticalTransition } from "@/components/TransitionProvider";
 import { BOOKING_URL, CONSULT_URL } from "@/data/site";
 
 const SWITCH = [
@@ -33,6 +34,7 @@ const ANCHORS: Record<string, Array<{ href: string; label: string }>> = {
  */
 export function Nav() {
   const pathname = usePathname();
+  const transition = useVerticalTransition();
   const onBarber = pathname.startsWith("/barber");
   const anchors = ANCHORS[onBarber ? "/barber" : "/ink"] ?? [];
   const bookHref = onBarber ? BOOKING_URL : CONSULT_URL;
@@ -72,10 +74,17 @@ export function Nav() {
           <div className="flex items-center gap-1 rounded-full border border-white/20 bg-black/50 p-1 backdrop-blur-sm">
             {SWITCH.map(({ href, label, full }) => {
               const active = pathname.startsWith(href);
+              const side = href === "/barber" ? "barber" : "ink";
               return (
                 <Link
                   key={href}
                   href={href}
+                  onClick={(event) => {
+                    if (transition && !active) {
+                      event.preventDefault();
+                      transition.navigate(href, side);
+                    }
+                  }}
                   aria-label={full}
                   aria-current={active ? "page" : undefined}
                   className={`pressable rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] transition-colors duration-200 ${

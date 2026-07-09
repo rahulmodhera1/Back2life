@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Archivo, Pirata_One } from "next/font/google";
+import { TransitionProvider } from "@/components/TransitionProvider";
 import "./globals.css";
 
 const anton = Anton({
@@ -50,7 +51,7 @@ export default function RootLayout({
       <body
         className={`${anton.variable} ${archivo.variable} ${pirata.variable} antialiased`}
       >
-        {children}
+        <TransitionProvider>{children}</TransitionProvider>
       </body>
     </html>
   );

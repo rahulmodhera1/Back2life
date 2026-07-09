@@ -31,7 +31,7 @@ export function Faq({ items }: FaqProps) {
               >
                 {item.question}
                 <Plus
-                  className={`size-5 flex-none transition-transform duration-300 [transition-timing-function:var(--ease-out-strong)] ${
+                  className={`size-5 flex-none text-gold transition-transform duration-300 [transition-timing-function:var(--ease-out-strong)] ${
                     open ? "rotate-45" : ""
                   }`}
                   aria-hidden="true"

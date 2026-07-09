@@ -55,7 +55,7 @@ export function PortfolioGrid({ images }: PortfolioGridProps) {
               type="button"
               onClick={() => setOpen(index)}
               aria-label={`Open ${image.alt} in lightbox`}
-              className="group pressable block w-full overflow-hidden bg-surface"
+              className="group pressable relative block w-full overflow-hidden bg-surface"
             >
               <Image
                 src={image.src}
@@ -65,6 +65,10 @@ export function PortfolioGrid({ images }: PortfolioGridProps) {
                 loading="lazy"
                 sizes="(max-width: 768px) 50vw, 33vw"
                 className="h-auto w-full object-cover transition-[transform,filter] duration-500 [transition-timing-function:var(--ease-out-strong)] group-hover:scale-[1.04] group-hover:brightness-110"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 border border-gold/0 transition-[border-color] duration-300 group-hover:border-gold/60"
               />
             </button>
           </li>
@@ -105,7 +109,7 @@ export function PortfolioGrid({ images }: PortfolioGridProps) {
                 className="max-h-[85dvh] w-auto object-contain"
                 priority
               />
-              <p className="mt-3 text-center text-xs uppercase tracking-[0.2em] text-mid">
+              <p className="mt-3 text-center text-xs uppercase tracking-[0.2em] text-gold">
                 {open + 1} / {images.length}
               </p>
             </motion.div>

@@ -10,13 +10,27 @@ type RevealProps = {
   delay?: number;
   /** Element to render, so list items stay valid HTML. */
   as?: "div" | "li";
+  /** Direction the content arrives from. */
+  from?: "up" | "left" | "right";
 };
+
+const OFFSETS = {
+  up: "translateY(24px)",
+  left: "translateX(-32px)",
+  right: "translateX(32px)",
+} as const;
 
 /**
  * Scroll-triggered reveal. Content is fully visible by default for
  * reduced-motion users and non-JS renderers; motion only enhances.
  */
-export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  as = "div",
+  from = "up",
+}: RevealProps) {
   const reduceMotion = useReducedMotion();
   const Tag = as;
   const MotionTag = as === "li" ? motion.li : motion.div;
@@ -28,8 +42,8 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
   return (
     <MotionTag
       className={className}
-      initial={{ opacity: 0, transform: "translateY(24px)" }}
-      whileInView={{ opacity: 1, transform: "translateY(0px)" }}
+      initial={{ opacity: 0, transform: OFFSETS[from] }}
+      whileInView={{ opacity: 1, transform: "translate(0px, 0px)" }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, delay, ease: [0.23, 1, 0.32, 1] }}
     >
