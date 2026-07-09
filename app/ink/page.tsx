@@ -6,6 +6,7 @@ import { CtaLink } from "@/components/CtaLink";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { InkWordmark } from "@/components/InkWordmark";
+import { WordmarkReveal } from "@/components/WordmarkReveal";
 import { Nav } from "@/components/Nav";
 import { PortfolioGrid } from "@/components/PortfolioGrid";
 import { Reveal } from "@/components/Reveal";
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Back2Life Ink — Tattoo Studio",
     description: "Ink for your next chapter. Book a consultation at Back2Life Ink.",
-    images: [{ url: "/photos/ink-hero.jpg", width: 1600, height: 1067 }],
+    images: [{ url: "/logos/og-ink.jpg", width: 320, height: 320 }],
   },
 };
 
@@ -42,7 +43,9 @@ export default function InkPage() {
           <Reveal className="flex flex-col items-center">
             <h1>
               <span className="sr-only">Back2Life Ink</span>
-              <InkWordmark sizeClassName="text-6xl md:text-8xl" />
+              <WordmarkReveal variant="focus" delay={0.1}>
+                <InkWordmark widthClassName="w-[78vw] max-w-[520px]" priority />
+              </WordmarkReveal>
             </h1>
             <p className="mt-8 max-w-md text-lg text-white/80">
               Every piece marks a chapter. Fine line, black &amp; grey, realism,
@@ -126,8 +129,19 @@ export default function InkPage() {
       </section>
 
       {/* Process — a real sequence, so the numbers carry meaning */}
-      <section id="process" aria-labelledby="process-heading" className="scroll-mt-20">
-        <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
+      <section
+        id="process"
+        aria-labelledby="process-heading"
+        className="relative scroll-mt-20 overflow-hidden"
+      >
+        {/* Ghost script watermark */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 w-[150%] max-w-none -translate-x-1/2 -translate-y-1/2 -rotate-6 opacity-[0.045] md:w-[85%]"
+        >
+          <InkWordmark widthClassName="w-full" />
+        </div>
+        <div className="relative mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
           <Reveal className="flex justify-center">
             <h2 id="process-heading" className="ink-rule blackletter text-5xl md:text-6xl">
               The Process

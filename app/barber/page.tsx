@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ChevronDown, MapPin, Star } from "lucide-react";
 import { InstagramIcon } from "@/components/InstagramIcon";
+import { StudiosWordmark } from "@/components/StudiosWordmark";
+import { WordmarkReveal } from "@/components/WordmarkReveal";
 import { CtaLink } from "@/components/CtaLink";
 import { Footer } from "@/components/Footer";
 import { GalleryGrid } from "@/components/GalleryGrid";
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Back2Life Studios — Barbershop",
     description: "Cuts that bring you back. Book a cut at Back2Life Studios.",
-    images: [{ url: "/photos/barber-hero.jpg", width: 1600, height: 1067 }],
+    images: [{ url: "/logos/og-studios.jpg", width: 983, height: 983 }],
   },
 };
 
@@ -68,10 +70,16 @@ export default function BarberPage() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.5em] text-gold">
               Barbershop
             </p>
-            <h1 className="display mt-4 text-[18vw] leading-none md:text-[10rem]">
-              Back2Life
+            <h1 className="mt-6">
+              <span className="sr-only">Back2Life Studios</span>
+              <WordmarkReveal variant="wipe" delay={0.15}>
+                <StudiosWordmark
+                  widthClassName="w-[82vw] max-w-[760px]"
+                  priority
+                />
+              </WordmarkReveal>
             </h1>
-            <p className="mt-3 text-[4.5vw] font-semibold uppercase tracking-[0.55em] text-white/90 md:text-2xl">
+            <p className="mt-5 text-[4.5vw] font-semibold uppercase tracking-[0.55em] text-white/90 md:text-2xl">
               Studios
             </p>
             <p className="mt-7 max-w-md text-base text-white/75 md:text-lg">
@@ -237,8 +245,15 @@ export default function BarberPage() {
       </section>
 
       {/* Reviews */}
-      <section aria-labelledby="reviews-heading">
-        <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
+      <section aria-labelledby="reviews-heading" className="relative overflow-hidden">
+        {/* Ghost wordmark watermark */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 w-[140%] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-[0.035] md:w-[90%]"
+        >
+          <StudiosWordmark widthClassName="w-full" />
+        </div>
+        <div className="relative mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
           <Reveal className="text-center">
             <h2 id="reviews-heading" className="display text-5xl md:text-7xl">
               Word of Mouth

@@ -33,9 +33,12 @@ export const HOURS: OpeningHours[] = [
 ];
 
 /**
- * Path to the supplied Back2Life Ink gothic-script logo (white on transparent),
- * once it's dropped into /public/logos/. While null, the site renders a
- * blackletter-font placeholder wordmark instead.
- * e.g. export const INK_LOGO_SRC = "/logos/back2life-ink.png";
+ * Official logo assets (white on transparent, extracted from the supplied
+ * files in /public/logos/). Set INK_LOGO_SRC to null to fall back to the
+ * blackletter placeholder wordmark.
  */
-export const INK_LOGO_SRC: string | null = null;
+export const INK_LOGO_SRC: string | null = "/logos/back2life-ink.png";
+export const INK_LOGO_SIZE = { width: 496, height: 212 };
+
+export const STUDIOS_LOGO_SRC = "/logos/back2life-studios.png";
+export const STUDIOS_LOGO_SIZE = { width: 1752, height: 558 };

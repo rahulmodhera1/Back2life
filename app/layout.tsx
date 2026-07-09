@@ -36,7 +36,7 @@ export const metadata: Metadata = {
       "Grooming that resets you. Ink that marks a new chapter. Pick your side.",
     siteName: "Back2Life",
     type: "website",
-    images: [{ url: "/photos/split-ink.jpg", width: 1200, height: 1600 }],
+    images: [{ url: "/logos/og-studios.jpg", width: 983, height: 983 }],
   },
 };
 

@@ -1,29 +1,36 @@
 import Image from "next/image";
-import { INK_LOGO_SRC } from "@/data/site";
+import { INK_LOGO_SIZE, INK_LOGO_SRC } from "@/data/site";
 
 type InkWordmarkProps = {
   className?: string;
-  /** Tailwind text-size classes for the placeholder script. */
+  /** Tailwind width classes for the logo image. */
+  widthClassName?: string;
+  /** Text-size classes for the blackletter fallback. */
   sizeClassName?: string;
+  priority?: boolean;
 };
 
 /**
- * The Back2Life Ink wordmark. Renders the supplied gothic-script logo image
- * once INK_LOGO_SRC is set in /data/site.ts; until then, a restrained
- * blackletter placeholder that follows the logo's layout (script over "INK"
- * flanked by hairline rule marks).
+ * The official Back2Life Ink wordmark (gothic script over "INK", extracted
+ * white-on-transparent). Falls back to a blackletter placeholder if
+ * INK_LOGO_SRC is unset in /data/site.ts.
  */
-export function InkWordmark({ className = "", sizeClassName = "text-5xl md:text-7xl" }: InkWordmarkProps) {
+export function InkWordmark({
+  className = "",
+  widthClassName = "w-64 md:w-80",
+  sizeClassName = "text-5xl md:text-7xl",
+  priority = false,
+}: InkWordmarkProps) {
   if (INK_LOGO_SRC) {
     return (
       <Image
         src={INK_LOGO_SRC}
         alt="Back2Life Ink"
-        width={480}
-        height={240}
-        className={`h-auto w-64 md:w-80 ${className}`}
+        width={INK_LOGO_SIZE.width}
+        height={INK_LOGO_SIZE.height}
+        priority={priority}
+        className={`h-auto ${widthClassName} ${className}`}
         style={{ filter: "none" }}
-        priority
       />
     );
   }
