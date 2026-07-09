@@ -151,40 +151,50 @@ export default function BarberPage() {
 
       {/* Services */}
       <section id="services" aria-labelledby="services-heading" className="scroll-mt-20 bg-black">
-        <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
-          <Reveal className="flex flex-wrap items-end justify-between gap-6">
-            <h2 id="services-heading" className="gold-tick display text-5xl md:text-7xl">
-              The Menu
+        <div className="mx-auto max-w-5xl px-5 py-24 md:px-10 md:py-32">
+          <Reveal className="flex flex-col items-center text-center">
+            <h2 id="services-heading" className="display text-5xl md:text-7xl">
+              The Craft
             </h2>
-            <p className="max-w-xs text-sm text-white/60">{SERVICE_NOTE}</p>
+            <GoldRule className="mt-6 w-16" origin="center" />
+            <p className="mt-5 max-w-md text-sm text-white/60">{SERVICE_NOTE}</p>
           </Reveal>
-          <ul className="mt-14 grid gap-x-16 gap-y-0 border-t border-hairline lg:grid-cols-2 lg:[&>li:nth-child(2)]:border-t">
+          <ul className="mx-auto mt-14 grid max-w-3xl gap-6 sm:grid-cols-2">
             {SERVICES.map((service, index) => (
               <Reveal
                 as="li"
-                from="left"
+                from={index % 2 === 0 ? "left" : "right"}
                 key={service.name}
-                delay={index * 0.05}
-                className="flex items-baseline justify-between gap-6 border-b border-hairline py-6"
+                delay={index * 0.08}
+                className="group"
               >
-                <div>
-                  <h3 className="display text-2xl">{service.name}</h3>
-                  <p className="mt-1.5 max-w-prose text-sm text-white/65">
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pressable flex h-full flex-col border border-hairline bg-near-black p-8 transition-colors duration-300 hover:border-gold/50 md:p-10"
+                >
+                  <h3 className="display text-3xl md:text-4xl">{service.name}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-white/65">
                     {service.description}
                   </p>
-                </div>
-                <p className="flex-none text-right text-sm font-semibold tabular-nums text-gold">
-                  {service.price}
-                  <span className="mt-0.5 block font-normal text-mid">{service.duration}</span>
-                </p>
+                  <p className="mt-8 flex items-baseline gap-3">
+                    <span className="display text-5xl text-gold">{service.price}</span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-mid">
+                      {service.duration}
+                    </span>
+                  </p>
+                  <span className="mt-7 inline-flex items-center gap-3 border-t border-hairline pt-5 text-xs font-bold uppercase tracking-[0.25em] text-white/80 transition-colors duration-200 group-hover:text-gold">
+                    Book this service
+                    <span
+                      aria-hidden="true"
+                      className="h-px w-6 bg-white/40 transition-colors duration-200 group-hover:bg-gold"
+                    />
+                  </span>
+                </a>
               </Reveal>
             ))}
           </ul>
-          <Reveal className="mt-10 flex justify-center">
-            <CtaLink href={BOOKING_URL} external>
-              Book a Cut
-            </CtaLink>
-          </Reveal>
         </div>
       </section>
 
