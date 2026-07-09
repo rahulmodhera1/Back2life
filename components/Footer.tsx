@@ -24,6 +24,9 @@ export function Footer() {
             <Link href="/ink" className="text-white transition-opacity duration-200 hover:opacity-70">
               Back2Life Ink — Tattoo Studio
             </Link>
+            <Link href="/" className="text-mid transition-colors duration-200 hover:text-gold">
+              ← Entrance — pick your side
+            </Link>
             <p className="mt-2 text-mid">
               {ADDRESS.line1}, {ADDRESS.line2}
             </p>

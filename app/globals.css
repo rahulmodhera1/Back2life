@@ -150,6 +150,31 @@ p {
   background: var(--gold);
 }
 
+/* Scrolling marquee strip (constant motion → linear timing) */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+}
+.marquee-track {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+  animation: marquee-scroll 28s linear infinite;
+}
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
 /* Pressable feedback on every button/CTA */
 .pressable {
   transition: transform 160ms var(--ease-out-strong);

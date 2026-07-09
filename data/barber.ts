@@ -40,12 +40,54 @@ export const SERVICES: Service[] = [
   },
 ];
 
-export type TeamMember = { name: string; role: string; specialty: string };
+export type TeamMember = {
+  name: string;
+  role: string;
+  specialty: string;
+  /** Portrait in /public/photos/ — swap for a real headshot. */
+  image: string;
+};
 
 export const TEAM: TeamMember[] = [
-  { name: "Marcus", role: "Master Barber", specialty: "Skin fades & freestyle designs" },
-  { name: "Dre", role: "Barber", specialty: "Classic cuts & hot towel shaves" },
-  { name: "Leo", role: "Barber", specialty: "Beard sculpting & line-ups" },
+  {
+    name: "Marcus",
+    role: "Master Barber",
+    specialty: "Skin fades & freestyle designs",
+    image: "/photos/barber-marcus.jpg",
+  },
+  {
+    name: "Dre",
+    role: "Barber",
+    specialty: "Classic cuts & hot towel shaves",
+    image: "/photos/barber-dre.jpg",
+  },
+  {
+    name: "Leo",
+    role: "Barber",
+    specialty: "Beard sculpting & line-ups",
+    image: "/photos/barber-leo.jpg",
+  },
+];
+
+export type Review = { quote: string; author: string };
+
+/** Placeholder testimonials — swap for real Google reviews. */
+export const REVIEWS: Review[] = [
+  {
+    quote:
+      "Cleanest fade I've had in years. The place feels premium without being pretentious — you sit down and just switch off.",
+    author: "Jordan M.",
+  },
+  {
+    quote:
+      "Booked with Marcus on a recommendation and never looked back. Every detail is sharp, every time.",
+    author: "Ade O.",
+  },
+  {
+    quote:
+      "The hot towel shave is worth the trip alone. Walked out feeling brand new — back to life, honestly.",
+    author: "Chris T.",
+  },
 ];
 
 export type GalleryImage = { src: string; alt: string; width: number; height: number };

@@ -62,7 +62,7 @@ export default function InkPage() {
       </section>
 
       {/* Portfolio */}
-      <section aria-labelledby="portfolio-heading">
+      <section id="work" aria-labelledby="portfolio-heading" className="scroll-mt-20">
         <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
           <Reveal className="flex flex-col items-center text-center">
             <h2
@@ -93,7 +93,7 @@ export default function InkPage() {
       </section>
 
       {/* Artists */}
-      <section aria-labelledby="artists-heading" className="border-t border-hairline bg-near-black">
+      <section id="artists" aria-labelledby="artists-heading" className="scroll-mt-20 border-t border-hairline bg-near-black">
         <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
           <Reveal className="flex justify-center">
             <h2 id="artists-heading" className="ink-rule blackletter text-5xl md:text-6xl">
@@ -126,7 +126,7 @@ export default function InkPage() {
       </section>
 
       {/* Process — a real sequence, so the numbers carry meaning */}
-      <section aria-labelledby="process-heading">
+      <section id="process" aria-labelledby="process-heading" className="scroll-mt-20">
         <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-32">
           <Reveal className="flex justify-center">
             <h2 id="process-heading" className="ink-rule blackletter text-5xl md:text-6xl">
@@ -155,7 +155,7 @@ export default function InkPage() {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="border-t border-hairline bg-near-black">
+      <section id="faq" aria-labelledby="faq-heading" className="scroll-mt-20 border-t border-hairline bg-near-black">
         <div className="mx-auto max-w-3xl px-5 py-24 md:px-10 md:py-32">
           <Reveal className="flex justify-center">
             <h2 id="faq-heading" className="ink-rule blackletter text-5xl md:text-6xl">
