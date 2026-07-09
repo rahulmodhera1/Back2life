@@ -73,7 +73,7 @@ export default function BarberPage() {
         >
           <Globe className="globe-spin w-full text-white opacity-10" strokeWidth={0.35} />
         </div>
-        <div className="relative z-10 flex flex-col items-center px-5 pb-24 pt-28">
+        <div className="relative z-10 flex flex-col items-center px-5 pb-[clamp(1.5rem,8dvh,6rem)] pt-[clamp(4.25rem,15dvh,7rem)]">
           <Reveal className="flex flex-col items-center">
             <p className="text-[11px] font-semibold uppercase tracking-[0.5em] text-gold">
               Barbershop
@@ -82,7 +82,7 @@ export default function BarberPage() {
               <span className="sr-only">Back2Life Studios</span>
               <WordmarkReveal variant="wipe" delay={0.15}>
                 <StudiosWordmark
-                  widthClassName="w-[82vw] max-w-[760px]"
+                  widthClassName="w-[min(82vw,46dvh)] max-w-[760px]"
                   priority
                   glow
                 />
@@ -93,15 +93,15 @@ export default function BarberPage() {
               Studios
               <span aria-hidden="true" className="h-px w-10 bg-gold-dim md:w-14" />
             </p>
-            <GoldRule className="mt-7 w-24" origin="center" delay={0.9} />
-            <p className="mt-7 max-w-md text-base text-white/75 md:text-lg">
+            <GoldRule className="mt-[clamp(0.75rem,2.5dvh,1.75rem)] w-24" origin="center" delay={0.9} />
+            <p className="mt-[clamp(0.75rem,2.5dvh,1.75rem)] max-w-md text-base text-white/75 md:text-lg">
               Precision cuts, sharp fades, and shaves done properly. Sit down,
               switch off, come back to life.
             </p>
             <p className="mt-5 text-xs font-medium uppercase tracking-[0.3em] text-white/60">
               {ADDRESS.line1} · {ADDRESS.line2}
             </p>
-            <div className="mt-9 flex flex-wrap justify-center gap-4">
+            <div className="mt-[clamp(1rem,3dvh,2.25rem)] flex flex-wrap justify-center gap-4">
               <CtaLink href={BOOKING_URL} external>
                 Book a Cut
               </CtaLink>

@@ -40,23 +40,23 @@ export default function InkPage() {
           sizes="100vw"
           className="object-cover brightness-[0.32]"
         />
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-5 pb-20 pt-32 text-center md:px-10">
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-5 pb-[clamp(1.5rem,8dvh,5rem)] pt-[clamp(4.5rem,17dvh,8rem)] text-center md:px-10">
           <Reveal className="flex flex-col items-center">
-            <p className="mb-8 text-[11px] font-semibold uppercase tracking-[0.5em] text-gold">
+            <p className="mb-[clamp(1rem,3dvh,2rem)] text-[11px] font-semibold uppercase tracking-[0.5em] text-gold">
               Tattoo Studio
             </p>
             <h1>
               <span className="sr-only">Back2Life Ink</span>
               <WordmarkReveal variant="focus" delay={0.1}>
-                <InkWordmark widthClassName="w-[78vw] max-w-[520px]" priority glow />
+                <InkWordmark widthClassName="w-[min(78vw,36dvh)] max-w-[520px]" priority glow />
               </WordmarkReveal>
             </h1>
-            <p className="mt-8 max-w-md text-lg text-white/80">
+            <p className="mt-[clamp(0.75rem,3dvh,2rem)] max-w-md text-lg text-white/80">
               Every piece marks a chapter. Fine line, black &amp; grey, realism,
               and traditional — done once, done right.
             </p>
-            <GoldRule className="mt-7 w-24" origin="center" delay={0.8} />
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <GoldRule className="mt-[clamp(0.75rem,2.5dvh,1.75rem)] w-24" origin="center" delay={0.8} />
+            <div className="mt-[clamp(0.75rem,2.5dvh,2rem)] flex flex-wrap justify-center gap-4">
               <CtaLink href={CONSULT_URL} external>
                 Book a Consultation
               </CtaLink>
