@@ -38,7 +38,7 @@ export default function InkPage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover brightness-[0.4]"
+          className="object-cover brightness-[0.32]"
         />
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-5 pb-20 pt-32 text-center md:px-10">
           <Reveal className="flex flex-col items-center">
@@ -48,7 +48,7 @@ export default function InkPage() {
             <h1>
               <span className="sr-only">Back2Life Ink</span>
               <WordmarkReveal variant="focus" delay={0.1}>
-                <InkWordmark widthClassName="w-[78vw] max-w-[520px]" priority />
+                <InkWordmark widthClassName="w-[78vw] max-w-[520px]" priority glow />
               </WordmarkReveal>
             </h1>
             <p className="mt-8 max-w-md text-lg text-white/80">

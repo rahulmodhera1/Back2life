@@ -111,9 +111,9 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
             transition={{ duration: 0.35, delay: overlay.phase === "in" ? 0.25 : 0, ease: "easeOut" }}
           >
             {overlay.side === "ink" ? (
-              <InkWordmark widthClassName="w-56 md:w-72" />
+              <InkWordmark widthClassName="w-56 md:w-72" glow />
             ) : (
-              <StudiosWordmark widthClassName="w-64 md:w-80" />
+              <StudiosWordmark widthClassName="w-64 md:w-80" glow />
             )}
             <span className="flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.5em] text-gold">
               <span className="h-px w-8 bg-gold-dim" />

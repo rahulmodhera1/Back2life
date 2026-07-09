@@ -157,7 +157,7 @@ export function SplitLanding() {
             className="flex flex-col items-center gap-4"
             style={{ x: barberParallax.springX, y: barberParallax.springY }}
           >
-            <StudiosWordmark widthClassName="w-[64vw] max-w-[340px] md:w-[30vw] md:max-w-[420px]" priority />
+            <StudiosWordmark widthClassName="w-[64vw] max-w-[340px] md:w-[30vw] md:max-w-[420px]" priority glow />
             <span className="text-xs font-semibold uppercase tracking-[0.6em] text-white/90">
               Studios
             </span>
@@ -230,7 +230,7 @@ export function SplitLanding() {
           <motion.span
             style={{ x: inkParallax.springX, y: inkParallax.springY }}
           >
-            <InkWordmark widthClassName="w-[58vw] max-w-[300px] md:w-[24vw] md:max-w-[380px]" priority />
+            <InkWordmark widthClassName="w-[58vw] max-w-[300px] md:w-[24vw] md:max-w-[380px]" priority glow />
           </motion.span>
           <p className="mt-1 max-w-xs text-sm text-white/70">
             Ink for your next chapter.

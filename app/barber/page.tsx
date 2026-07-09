@@ -11,7 +11,7 @@ import { GalleryGrid } from "@/components/GalleryGrid";
 import { Globe } from "@/components/Globe";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
-import { BARBER_GALLERY, REVIEWS, SERVICES, TEAM } from "@/data/barber";
+import { BARBER_GALLERY, REVIEWS, SERVICES, SERVICE_NOTE, TEAM } from "@/data/barber";
 import { ADDRESS, BOOKING_URL, HOURS, INSTAGRAM_STUDIOS } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
 };
 
-const MARQUEE_ITEMS = ["Cuts", "Fades", "Beards", "Hot Towel Shaves", "Kids Cuts"];
+const MARQUEE_ITEMS = ["Haircuts", "Beards", "Fades", "Line-Ups"];
 
 /** Services ticker, with the official wordmark stamped between passes. */
 function MarqueeStrip() {
@@ -84,6 +84,7 @@ export default function BarberPage() {
                 <StudiosWordmark
                   widthClassName="w-[82vw] max-w-[760px]"
                   priority
+                  glow
                 />
               </WordmarkReveal>
             </h1>
@@ -155,10 +156,7 @@ export default function BarberPage() {
             <h2 id="services-heading" className="gold-tick display text-5xl md:text-7xl">
               The Menu
             </h2>
-            <p className="max-w-xs text-sm text-white/60">
-              Every service ends with a sharp finish — hot towel, product, and
-              a proper once-over.
-            </p>
+            <p className="max-w-xs text-sm text-white/60">{SERVICE_NOTE}</p>
           </Reveal>
           <ul className="mt-14 grid gap-x-16 gap-y-0 border-t border-hairline lg:grid-cols-2 lg:[&>li:nth-child(2)]:border-t">
             {SERVICES.map((service, index) => (
@@ -225,9 +223,9 @@ export default function BarberPage() {
               The Chairs
             </h2>
           </Reveal>
-          <ul className="mt-14 grid gap-8 sm:grid-cols-3">
+          <ul className="mt-14 flex flex-wrap justify-center gap-8">
             {TEAM.map((member, index) => (
-              <Reveal as="li" key={member.name} delay={index * 0.06} className="group">
+              <Reveal as="li" key={member.name} delay={index * 0.06} className="group w-full max-w-sm">
                 <div className="relative aspect-[4/5] overflow-hidden bg-surface">
                   <Image
                     src={member.image}
@@ -251,7 +249,7 @@ export default function BarberPage() {
                     <p className="mt-2 text-sm text-white/65">{member.specialty}</p>
                   </div>
                   <a
-                    href={BOOKING_URL}
+                    href={member.bookUrl ?? BOOKING_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="pressable mt-1 flex-none border border-white/30 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition-colors duration-200 hover:border-gold hover:text-gold"
@@ -286,6 +284,16 @@ export default function BarberPage() {
               {Array.from({ length: 5 }, (_, i) => (
                 <Star key={i} className="size-4 fill-gold text-gold" aria-hidden="true" />
               ))}
+            </p>
+            <p className="mt-3">
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-semibold uppercase tracking-[0.25em] text-white/60 transition-colors duration-200 hover:text-gold"
+              >
+                Rated 5.0 on Booksy
+              </a>
             </p>
           </Reveal>
           <ul className="mt-14 grid gap-10 md:grid-cols-3">

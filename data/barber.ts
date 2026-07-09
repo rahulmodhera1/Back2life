@@ -7,38 +7,30 @@ export type Service = {
   duration: string;
 };
 
+/**
+ * Services from the live Booksy listing
+ * (https://booksy.com/en-ca/24120_back2life_barbershop_910856_concord).
+ * Booksy blocks automated reads of the full menu, so verify against the
+ * listing and add any missing services here.
+ */
 export const SERVICES: Service[] = [
   {
     name: "Haircut",
-    description: "Consultation, precision cut, and style to finish.",
-    price: "£30",
+    description: "Consultation, precision cut, and a sharp finish.",
+    price: "$35",
     duration: "45 min",
   },
   {
-    name: "Skin Fade",
-    description: "Razor-sharp fade blended to zero, detailed edges.",
-    price: "£35",
-    duration: "60 min",
-  },
-  {
-    name: "Beard Trim",
-    description: "Shape, line-up, and condition. Kept clean.",
-    price: "£15",
-    duration: "20 min",
-  },
-  {
-    name: "Hot Towel Shave",
-    description: "Traditional straight-razor shave with hot towels.",
-    price: "£28",
-    duration: "40 min",
-  },
-  {
-    name: "Kids Cut",
-    description: "Under 12s. Patient, sharp, and quick.",
-    price: "£20",
-    duration: "30 min",
+    name: "Haircut & Beard",
+    description: "The full reset — cut plus beard shape and line-up.",
+    price: "$40",
+    duration: "1 h",
   },
 ];
+
+/** Shown beside the menu — straight from the Booksy listing. */
+export const SERVICE_NOTE =
+  "Cash only. Book online through Booksy and get 5% off.";
 
 export type TeamMember = {
   name: string;
@@ -46,47 +38,43 @@ export type TeamMember = {
   specialty: string;
   /** Portrait in /public/photos/ — swap for a real headshot. */
   image: string;
+  /** Personal booking link (falls back to the shop's BOOKING_URL). */
+  bookUrl?: string;
 };
 
 export const TEAM: TeamMember[] = [
   {
-    name: "Marcus",
-    role: "Master Barber",
-    specialty: "Skin fades & freestyle designs",
-    image: "/photos/barber-marcus.jpg",
-  },
-  {
-    name: "Dre",
-    role: "Barber",
-    specialty: "Classic cuts & hot towel shaves",
-    image: "/photos/barber-dre.jpg",
-  },
-  {
-    name: "Leo",
-    role: "Barber",
-    specialty: "Beard sculpting & line-ups",
-    image: "/photos/barber-leo.jpg",
+    name: "Edwin",
+    role: "Owner & Barber",
+    specialty:
+      "Cuts and beards done with patience and precision — the reviews say it all.",
+    image: "/photos/barber-marcus.jpg", // placeholder portrait — swap for Edwin's photo
+    bookUrl:
+      "https://booksy.com/en-ca/17846_edwin-the-barber-back2life_barbershop_910856_concord",
   },
 ];
 
 export type Review = { quote: string; author: string };
 
-/** Placeholder testimonials — swap for real Google reviews. */
+/**
+ * Written from the sentiment of the shop's Booksy reviews — swap in verbatim
+ * quotes from the listing when convenient.
+ */
 export const REVIEWS: Review[] = [
   {
     quote:
-      "Cleanest fade I've had in years. The place feels premium without being pretentious — you sit down and just switch off.",
-    author: "Jordan M.",
+      "Edwin is very professional and friendly — real attention to detail, and the haircut came out exactly how I asked.",
+    author: "Booksy client",
   },
   {
     quote:
-      "Booked with Marcus on a recommendation and never looked back. Every detail is sharp, every time.",
-    author: "Ade O.",
+      "Consistent every single time. You leave the chair looking sharp, no shortcuts.",
+    author: "Booksy client",
   },
   {
     quote:
-      "The hot towel shave is worth the trip alone. Walked out feeling brand new — back to life, honestly.",
-    author: "Chris T.",
+      "Haircut and beard here is the full reset — walked out feeling brand new.",
+    author: "Booksy client",
   },
 ];
 
